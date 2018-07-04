@@ -1,0 +1,29 @@
+装饰者模式、适配器模式、代理模式的区别
+角色：
+装饰者模式主要有两个角色 装饰类和被装饰类
+适配器模式主要有三个角色 原对象 适配对象 目标对象
+代理模式主要有两个角色   原对象 代理对象
+功能:
+装饰者模式 扩展原类(被装饰类)功能 在一个原有类(装饰类)基础上增加某些新功能变成另一个类(被装饰类)
+适配器模式 新对象兼容老功能 将一个类(原类)通过某种方式(适配)转换成另一个类(目标类)
+代理模式   将一个类(原对象)转换为具体的操作类(代理对象) 代理模式可以对原对象的执行方法进行增强
+实现方式
+装饰者模式 装饰类、被装饰类 实现同一接口(被装饰类的接口)
+public interface LoginService{void login();};
+public interface ExtendLoginServce extends LoginServce{void loginQQ();}
+适配器模式 目标类中包裹原对象的成员属性
+public interface CNCharge{void CNCharge()} ...实现类。。。
+public interfact HKCharge{void HKCharge()}
+public HKChargeImpl implements HKCharge{
+private CNCharge cnCharge;
+@override
+void HKCharge(){
+    cnCharge.CNChagre()
+    }
+}
+代理模式   代理对象和原对象实现同一接口 代理对象实现InvocationHandler 且含有原接口的成员属性(因为最终方法的执行者还是原对象)
+public interface User{void saveUser(User user)} 实现类...
+public UserProxy implements InvovationHandler{
+private User user;
+....
+}
